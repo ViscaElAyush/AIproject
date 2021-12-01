@@ -15,7 +15,7 @@
 from util import manhattanDistance
 from game import Directions
 import random, util
-import numpy as np
+from math import log
 
 from game import Agent
 
@@ -355,7 +355,7 @@ class MCTS(MultiAgentSearchAgent):
         uctNodes = []
         
         for child in node.child:
-            childUCT = (child.score/child.visits) + ((np.log(node.visits))/child.visits)**0.5
+            childUCT = (child.score/child.visits) + ((log(node.visits))/child.visits)**0.5
             if childUCT >= best:
                 if childUCT == best:
                     uctNodes.append(child)
